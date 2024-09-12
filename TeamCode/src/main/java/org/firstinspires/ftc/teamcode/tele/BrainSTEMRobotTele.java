@@ -19,18 +19,17 @@ public class BrainSTEMRobotTele {
     public LiftTele lift;
     public CollectorTele collector;
 
-    public BrainSTEMRobotTele(HardwareMap hwMap, Telemetry telemetry, OpMode opMode, Gamepad gamepad1) {
+    public BrainSTEMRobotTele(HardwareMap hwMap, Telemetry telemetry, OpMode opMode) {
 
         this.telemetry = telemetry;
         this.opMode = opMode;
 
-        driveTrain = new DriveTrain(hwMap, telemetry, gamepad1);
-        lift = new Lift(hwMap, telemetry, gamepad1);
-        collector = new Collector(hwMap, telemetry, gamepad1);
+        driveTrain = new DriveTrainTele(hwMap, telemetry);
+        lift = new LiftTele(hwMap, telemetry);
+        collector = new CollectorTele(hwMap, telemetry);
     }
 
     public void update() {
-        driveTrain.update();
         lift.update();
         collector.update();
     }

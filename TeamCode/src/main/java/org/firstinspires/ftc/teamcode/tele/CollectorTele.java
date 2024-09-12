@@ -69,10 +69,7 @@ public class CollectorTele {
                 break;
             case OFF:
                 off();
-                break;
-        }
-    }
-
+                
     // internal functionality
     private void collect() {
         if(collectTickChecker.valid()) {
@@ -95,4 +92,4 @@ public class CollectorTele {
 
 
 
-}
+
