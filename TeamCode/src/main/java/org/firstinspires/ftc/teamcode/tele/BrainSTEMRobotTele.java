@@ -18,7 +18,7 @@ public class BrainSTEMRobotTele {
     public DriveTrainTele driveTrain;
     public LiftTele lift;
     public CollectorTele collector;
-
+    public GrabberTele grabber;
     public BrainSTEMRobotTele(HardwareMap hwMap, Telemetry telemetry, OpMode opMode) {
 
         this.telemetry = telemetry;
