@@ -22,8 +22,6 @@ import org.firstinspires.ftc.teamcode.util.TickChecker;
 // then would need to adjust robot (and potentially extension) position to search new area for block
 
 public class CollectorTele {
-    private HardwarMap hwMap;
-    private Telemetry telemetry;
     // need servo for grabber (wheels)
     // need dcExMotor for rollers
     private DcMotorEx rollerMotor;
@@ -38,13 +36,12 @@ public class CollectorTele {
     private enum States {
         COLLECTING, SPITTING, OFF
     }
-    private States state;
+    private States state = States.OFF;
 
-    public CollectorTele(HardwareMap hwMap, Telemetry telemetry) {
-        this.hwMap = hwMap;
-        this.telemetry = telemetry;
-        this.rollerMotor = new CachingMotor(this.hwMap.get(DcMotorEx.class, "roller"));
-        this.grabberServo = new CachingServo(this.hwMap.get(ServoImpleEx.class, "grabber"), MIN, MAX); // MIN AND MAX HAVE NOT BEEN INITIALIZED YET
+    public CollectorTele extends SubsystemTele(HardwareMap hwMap, Telemetry telemetry) {
+        super(hwMap, telemetry)
+        this.rollerMotor = new CachingMotor(this.hwMap.get(DcMotorEx.class, "rollerMotor"));
+        this.grabberServo = new CachingServo(this.hwMap.get(ServoImpleEx.class, "grabberServo"), MIN, MAX); // MIN AND MAX HAVE NOT BEEN INITIALIZED YET
     }
 
     // state setters
@@ -58,7 +55,7 @@ public class CollectorTele {
         state = States.OFF;
     }
 
-    // should be called once every "frame"
+    @Override
     public void checkState() {
         switch(state) {
             case COLLECTING:
@@ -69,7 +66,7 @@ public class CollectorTele {
                 break;
             case OFF:
                 off();
-                
+
     // internal functionality
     private void collect() {
         if(collectTickChecker.valid()) {
