@@ -23,7 +23,7 @@ public class DriveTrainTele extends DriveTrain {
     public float frontRightPower = 0;
     public float backRightPower = 0;
 
-    public DriveTrainTele(HardwareMap hwMap, Telemetry telemetry) {
+    public DriveTrainTele extends SubsystemTele (HardwareMap hwMap, Telemetry telemetry) {
         super(hwMap, telemetry);
         frontLeft =  (DcMotorEx)hwMap.dcMotor.get("FL");
         frontRight = (DcMotorEx)hwMap.dcMotor.get("FR");

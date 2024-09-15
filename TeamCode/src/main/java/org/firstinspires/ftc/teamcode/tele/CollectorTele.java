@@ -36,7 +36,7 @@ public class CollectorTele extends Collector {
     private enum States {
         COLLECTING, SPITTING, OFF
     }
-    private States state;
+    private States state = States.OFF;
 
     public CollectorTele(HardwareMap hwMap, Telemetry telemetry) {
         super(hwMap, telemetry);
@@ -49,16 +49,18 @@ public class CollectorTele extends Collector {
     public setCollect() {
         state = States.COLLECTING;
     }
+
     public setSpit() {
         state = States.SPITTING;
     }
+
     public setOff() {
         state = States.OFF;
     }
 
-    // should be called once every "frame"
+    @Override
     public void checkState() {
-        switch(state) {
+        switch (state) {
             case COLLECTING:
                 collect();
                 break;
@@ -67,26 +69,29 @@ public class CollectorTele extends Collector {
                 break;
             case OFF:
                 off();
-                
-    // internal functionality
-    private void collect() {
-        if(collectTickChecker.valid()) {
-            rollerMotor.setPower(collectPower);
-        } else {
-            setOff();
+
+                // internal functionality
+                private void collect () {
+                if (collectTickChecker.valid()) {
+                    rollerMotor.setPower(collectPower);
+                } else {
+                    setOff();
+                }
+            }
+            private void spit () {
+                grabberServo.setPosition(0.99);
+                if (spitTickChecker.valid()) {
+                    rollerMotor.setPower(spitPower);
+                } else {
+                    setOff();
+                }
+            }
+            private void off () {
+                rollerMotor.setPower(0);
+            }
         }
     }
-    private void spit() {
-        grabberServo.setPosition(0.99);
-        if(spitTickChecker.valid()) {
-            rollerMotor.setPower(spitPower);
-        } else {
-            setOff();
-        }
-    }
-    private void off() {
-        rollerMotor.setPower(0);
-    }
+}
 
 
 
