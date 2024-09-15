@@ -15,7 +15,6 @@ public class Auto extends LinearOpMode {
     public static Pose2d beginPose = new Pose2d(0, 0, 0);
     public static Pose2d position1Pose = new Pose2d(50, 20, 0);
 
-
     @Override
     public void runOpMode() throws InterruptedException {
         BrainSTEMRobotAuto robot = new BrainSTEMRobotAuto(hardwareMap, telemetry);
@@ -26,9 +25,7 @@ public class Auto extends LinearOpMode {
 
         runBlocking(new SequentialAction(
                 robot.lift.raiseLift(),
-                robot.lift.lowerLift(),
-                robot.drive.actionBuilder(robot.drive.pose)
-                        .splineToSplineheading(new Vector2d(50, 50), Math.toRadians(0))
+                robot.lift.lowerLift()
         ));
     }
 }
