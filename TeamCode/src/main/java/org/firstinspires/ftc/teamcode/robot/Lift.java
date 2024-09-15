@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class LiftTele extends Lift {
+public class LiftTele extends Subsystem {
 
     DcMotorEx liftMotor;
 

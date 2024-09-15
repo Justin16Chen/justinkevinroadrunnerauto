@@ -21,7 +21,7 @@ import org.firstinspires.ftc.teamcode.util.TickChecker;
 // if block not good, spin wheels in opposite direction and run collect motor in opposite direction
 // then would need to adjust robot (and potentially extension) position to search new area for block
 
-public class CollectorTele extends Collector {
+public class Collector extends Subsystem {
     // need servo for grabber (wheels)
     // need dcExMotor for rollers
     private DcMotorEx rollerMotor;

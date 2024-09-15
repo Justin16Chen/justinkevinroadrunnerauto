@@ -23,9 +23,11 @@ public class Auto extends LinearOpMode {
 
         robot.drive.pose = beginPose;
 
-        runBlocking(new SequentialAction(
+        Actions.runBlocking(new SequentialAction(
                 robot.lift.raiseLift(),
-                robot.lift.lowerLift()
+                robot.lift.lowerLift(),
+                robot.drive.actionBuilder(beginPose)
+                .splineToSplineHeading(position1Pose)
         ));
     }
 }

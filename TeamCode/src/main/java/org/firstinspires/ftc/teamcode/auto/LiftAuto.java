@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.tele.SubsystemTele;
 
-public class LiftAuto extends SubsystemAuto {
+public class LiftAuto extends Lift {
 
     // TODO: use encoder to find max and min positions of lift
     public static int MAX_TICK_POSITION = 100;

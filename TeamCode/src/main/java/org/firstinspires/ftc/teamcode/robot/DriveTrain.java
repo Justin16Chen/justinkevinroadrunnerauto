@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-public class DriveTrainTele extends DriveTrain {
+public class DriveTrainTele extends Subsystem {
 
     private int tick;
 
@@ -25,6 +25,7 @@ public class DriveTrainTele extends DriveTrain {
 
     public DriveTrainTele(HardwareMap hwMap, Telemetry telemetry) {
         super(hwMap, telemetry);
+
         frontLeft =  (DcMotorEx)hwMap.dcMotor.get("FL");
         frontRight = (DcMotorEx)hwMap.dcMotor.get("FR");
         backLeft =   (DcMotorEx)hwMap.dcMotor.get("BL");
